@@ -16,15 +16,19 @@ declare namespace ContentfulImageTransform {
         | 'faces'
     type Format = 'jpg' | 'progressive' | 'gif' | 'png' | '8bit' | 'webp' | 'avif'
     type Fit = 'pad' | 'fill' | 'scale' | 'crop' | 'thumb'
+    type Key = 'q' | 'w' | 'h' | 'fit' | 'f' | 'r' | 'fm' | 'fl' | 'bg'
 }
 
-type MediaQuery = Record<number, {
+export type MediaQuery = {
     width?: number,
     height?: number,
-}>
+    quality?: number
+}
+
+export type MediaQueries = Record<string, MediaQuery>
 
 type Props = {
-    image: TypeImage // Asset['fields']['file']
+    image: TypeImage
     alt?: string
     width?: number,
     height?: number,
@@ -35,19 +39,47 @@ type Props = {
     focusArea?: ContentfulImageTransform.FocusArea,
     radius?: number
     decoding?: 'auto' | 'sync' | 'async',
-    // to be implemented
-    // mediaQueries?: MediaQuery
+    mediaQueries?: MediaQueries
 };
 
-const imagePropsMap = {
-    width: 'w',
-    height: 'h',
-    behaviour: 'fit',
-    quality: 'q',
-    backgroundColor: 'bg',
-    focusArea: 'f',
-    radius: 'r',
-    format: 'fm'
+function buildQueryParam(key: ContentfulImageTransform.Key, value?: string | number): Record<string, string> | null {
+    if (value) {
+        return {[key]: value.toString()}
+    } else {
+        return null;
+    }
+}
+
+function buildFormatQueryParam(format?: ContentfulImageTransform.Format): Record<string, string> | null {
+    if (!format) {
+        return null
+    } else {
+        if (format === '8bit') {
+            return {fm: 'png', fl: 'png8'}
+        } else if (format === 'progressive') {
+            return {fm: 'jpg', fl: 'progressive'}
+        } else {
+            return {fm: format}
+        }
+    }
+}
+
+function buildSrcUrl(url: string, query: Record<string, string>) {
+    return `${url}?${new URLSearchParams(query).toString()}`
+}
+
+function buildMimeTime(format?: ContentfulImageTransform.Format) {
+    if (!format) {
+        return
+    }
+    switch (format) {
+        case '8bit' :
+            return 'image/png'
+        case 'progressive':
+            return 'image/jpeg'
+        default:
+            return `image/${format || 'jpeg'}`
+    }
 }
 
 const ContentfulImage: React.FC<Props> = (
@@ -62,75 +94,51 @@ const ContentfulImage: React.FC<Props> = (
         focusArea,
         format,
         radius,
-        decoding = 'auto'
+        decoding = 'auto',
+        mediaQueries = {}
     }) => {
 
-    let mimeType = image.contentType // extract mimeType from image.url
-    let query = {};
+    let mimeType = buildMimeTime(format) || image.contentType
 
-    // should only allow ContentfulImage.Query props
-    function addToQuery(prop: Record<string, string>) {
-        query = {...query, ...prop}
+    const query = {
+        ...buildQueryParam('q', quality),
+        ...buildQueryParam('w', width),
+        ...buildQueryParam('h', height),
+        ...buildQueryParam('fit', behaviour),
+        ...buildQueryParam('f', focusArea),
+        ...buildQueryParam('r', radius),
+        ...buildQueryParam('bg', backgroundColor),
+        ...buildFormatQueryParam(format),
     }
 
-    if (quality) {
-        addToQuery({[imagePropsMap['quality']]: quality.toString()})
-    }
-
-    if (width) {
-        addToQuery({[imagePropsMap['width']]: width.toString()})
-    }
-
-    if (height) {
-        addToQuery({[imagePropsMap['height']]: height.toString()})
-    }
-
-    if (behaviour) {
-        addToQuery({[imagePropsMap['behaviour']]: behaviour.toString()})
-    }
-
-    if (focusArea) {
-        addToQuery({[imagePropsMap['focusArea']]: focusArea.toString()})
-    }
-
-    if (radius) {
-        addToQuery({[imagePropsMap['radius']]: radius.toString()})
-    }
-
-    if (format) {
-        if (format === '8bit') {
-            addToQuery({'fm': 'png'})
-            addToQuery({'fl': 'png8'})
-            mimeType = 'image/png'
-        } else if (format === 'progressive') {
-            addToQuery({'fm': 'jpg'})
-            addToQuery({'fl': 'progressive'})
-            mimeType = 'image/jpg'
-        } else {
-            addToQuery({[imagePropsMap['format']]: format.toString()})
-            mimeType = `image/${format}`
+    const mediaQuerySources = Object.keys(mediaQueries).map((key: string) => {
+        const sourceQuery = {
+            ...query,
+            ...buildQueryParam('w', mediaQueries[key].width),
+            ...buildQueryParam('h', mediaQueries[key].height),
         }
-    }
+        return (
+            <source
+                srcSet={buildSrcUrl(image.url, sourceQuery)}
+                type={`${mimeType}`}
+                media={key}
+                key={key}
+            />
+        )
+    })
 
-    if (quality) {
-        addToQuery({[imagePropsMap['quality']]: quality.toString()})
-    }
-
-    if (backgroundColor) {
-        addToQuery({[imagePropsMap['backgroundColor']]: backgroundColor.toString()})
-    }
-
-    const transformSrc = `${image.url}?${new URLSearchParams(query).toString()}`
+    const src = buildSrcUrl(image.url, query);
 
     return (
         <picture>
-            <source srcSet={transformSrc} type={`${mimeType}`}/>
+            {mediaQuerySources}
+            <source srcSet={src} type={`${mimeType}`}/>
             <img
-                src={image.url}
+                src={src}
                 alt={alt || image.title}
                 decoding={decoding}
-                width={width}
-                height={height}
+                //width={width}
+                //height={height}
             />
         </picture>
     );
