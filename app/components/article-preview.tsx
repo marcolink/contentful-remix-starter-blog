@@ -19,7 +19,13 @@ const ArticlePreview = ({posts}) => {
                         return (
                             <li key={post.slug}>
                                 <Link to={`/blog/${post.slug}`} className={"link"} prefetch={"intent"}>
-                                    <ContentfulImage image={post.heroImage} width={424} height={212}/>
+                                    <ContentfulImage
+                                        image={post.heroImage}
+                                        width={424}
+                                        height={212}
+                                        quality={50}
+                                        format={"webp"}
+                                    />
                                     <h2 className={"title"}>{post.title}</h2>
                                 </Link>
                                 <div
