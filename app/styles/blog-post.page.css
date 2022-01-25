@@ -1,0 +1,97 @@
+.blog-post .meta {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    font-style: italic;
+    margin: 0 auto 1em;
+    max-width: var(--size-max-width);
+    padding-bottom: var(--size-gutter);
+    padding-left: var(--size-gutter);
+    position: relative;
+    top: -1em;
+}
+
+.blog-post .article {
+    display: grid;
+    font-size: var(--text-prose);
+    gap: var(--space-xl);
+    letter-spacing: var(--text-prose-tracking);
+    line-height: var(--loose);
+    padding: var(--size-gutter) var(--size-gutter) calc(var(--size-gutter) * 2);
+}
+
+.body {
+    max-width: 48rem;
+}
+
+.blog-post .article h2:first-of-type {
+    margin-top: 0;
+}
+
+.blog-post .article a {
+    border-bottom: 1.5px solid currentColor;
+    font-weight: var(--medium);
+}
+
+.blog-post .article a:hover {
+    border-bottom-color: transparent;
+    color: var(--primary);
+}
+
+.blog-post .article p {
+    margin-bottom: 1.5em;
+    margin-top: 0;
+}
+
+.blog-post .article h1,
+.blog-post .article h2 {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-3xl);
+}
+
+.blog-post .article h3,
+.blog-post .article h4,
+.blog-post .article h5,
+.blog-post .article h6 {
+    font-size: var(--text-prose);
+    font-weight: var(--semibold);
+    margin-bottom: 0.5em;
+    margin-top: 3em;
+}
+
+.blog-post .article li {
+    margin-bottom: 0.5em;
+}
+
+.blog-post .articleNavigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+}
+
+@media (min-width: 768px) {
+    .blog-post .container {
+        max-width: var(--size-max-width);
+        margin: 0 auto;
+    }
+
+    .blog-post .article {
+        gap: var(--space-xl);
+        text-align: left;
+    }
+}
+
+@media (min-width: 1024px) {
+    .blog-post .article {
+        gap: var(--space-3xl);
+        margin: 0 var(--size-gutter) 0 auto;
+        padding-left: 0;
+        padding-right: 0;
+        width: calc(85% - var(--size-gutter));
+    }
+
+    .blog-post .article ul {
+        padding-left: 0;
+    }
+}

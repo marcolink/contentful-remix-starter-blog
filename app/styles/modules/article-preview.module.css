@@ -1,0 +1,30 @@
+.article-module .article-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: var(--space-3xl);
+}
+
+.article-module .title {
+  display: inline-block;
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-xs);
+  margin-top: var(--space-lg);
+  border-bottom: 1.5px solid transparent;
+}
+
+.article-module .link {
+  text-decoration: none;
+}
+
+.article-module .link:hover .title {
+  border-bottom-color: var(--primary);
+}
+
+.article-module .meta {
+    margin-top: var(--space-md);
+  display: flex;
+  justify-content: space-between;
+}
