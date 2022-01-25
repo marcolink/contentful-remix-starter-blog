@@ -1,17 +1,18 @@
 import React from 'react'
 import {CssModuleWrapper} from "~/components/css-module-wrapper";
 
-const Tags = ({tags}) =>
-    tags?.length > 0 ? (
+type Props = {
+    tags: string[]
+}
+
+const Tags: React.FC<Props> = ({tags = []}) => {
+    return (
         <CssModuleWrapper className={"tags-module"}>
             <small className={"tags"}>
-                {tags.map((tag) => (
-                    <div key={tag} className={"tag"}>
-                        {tag}
-                    </div>
-                ))}
+                {tags.map((tag) => <div key={tag} className={"tag"}>{tag}</div>)}
             </small>
         </CssModuleWrapper>
-    ) : <></>
+    )
+}
 
 export default Tags

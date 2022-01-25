@@ -1,7 +1,7 @@
 import * as React from "react";
 
 type Props = {
-	className:string
+    className: string
 };
 
 const CssModuleWrapper: React.FC<Props> = ({className, children}) => {
@@ -12,4 +12,4 @@ const CssModuleWrapper: React.FC<Props> = ({className, children}) => {
     );
 };
 
-export { CssModuleWrapper };
+export {CssModuleWrapper};

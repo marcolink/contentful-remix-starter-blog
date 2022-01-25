@@ -7,7 +7,6 @@ Create a [Remix](https://remix.run/) blog powered by [Contentful](https://www.co
 ![Screenshot](screenshot.png)
 
 ## Getting started
-See our [official Contentful getting started guide](https://www.contentful.com/developers/docs/tutorials/general/get-started/).
 
 ### Get the source code and install dependencies
 ```shell

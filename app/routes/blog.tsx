@@ -6,7 +6,7 @@ import ArticlePreview from "~/components/article-preview";
 import Hero from "~/components/hero";
 import {TypePostPreview} from "../../types/contentful-graphql-types";
 
-type LoaderData = { posts: TypePostPreview };
+type LoaderData = { posts: TypePostPreview[] };
 
 export const loader: LoaderFunction = async ({}) => {
     return json({

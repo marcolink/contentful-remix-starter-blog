@@ -11,23 +11,23 @@ type Props = {
 
 const Hero: React.FC<Props> = ({image, title, content}) => (
     <CssModuleWrapper className={"hero-module"}>
-        <div className={"hero"}>
+        <section className={"hero"}>
             {image && (
-                <div className={'image'}>
+                <figure className={'image'}>
                 <ContentfulImage
                     alt={title}
                     image={image}
                     quality={50}
-                    format={'webp'}
+                    format={'avif'}
                     width={1920}
                 />
-                </div>
+                </figure>
             )}
             <div className={"details"}>
                 <h1 className={"title"}>{title}</h1>
                 {content && <p className={"content"}>{content}</p>}
             </div>
-        </div>
+        </section>
     </CssModuleWrapper>
 )
 

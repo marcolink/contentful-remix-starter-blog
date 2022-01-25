@@ -24,24 +24,22 @@ export const links = () => [
 
 export const meta: MetaFunction = ({parentsData, params}) => {
 
-    const description = "default description"
+    const description = "Remix starter for a Contentful blog (template) project"
     const content = "default description"
-    const image = ""
-    const title = ""
+    const keywords = "Contentful, Blog, Starter, Remix"
+    const title = "Contentful Remix Blog Starter"
 
     return {
-        titel: title,
-        name: description,
-        "image": image,
+        title,
+        description,
+        keywords,
+
         "og:title": title,
         "og:description": description,
         "og:type": `website`,
-        "og:image": image,
-        "twitter:card": `summary_large_image`,
-        "twitter:creator": content,
+
         "twitter:title": title,
         "twitter:description": description,
-
     }
 }
 

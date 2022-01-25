@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'remix'
 import {CssModuleWrapper} from "~/components/css-module-wrapper";
 
-const Navigation = () => (
+const Navigation: React.FC = () => (
     <CssModuleWrapper className={"navigation-module"}>
         <nav role="navigation" className={"container"} aria-label="Main">
             <Link to="/" className={"logoLink"}>

@@ -16,11 +16,6 @@ declare namespace ContentfulImageTransform {
         | 'faces'
     type Format = 'jpg' | 'progressive' | 'gif' | 'png' | '8bit' | 'webp' | 'avif'
     type Fit = 'pad' | 'fill' | 'scale' | 'crop' | 'thumb'
-    type Query = {
-        w?: string
-        h?: string
-        fit?: Fit
-    }
 }
 
 type MediaQuery = Record<number, {
@@ -70,7 +65,7 @@ const ContentfulImage: React.FC<Props> = (
         decoding = 'auto'
     }) => {
 
-    let mimeType = '' // extract mimeType from image.url
+    let mimeType = image.contentType // extract mimeType from image.url
     let query = {};
 
     // should only allow ContentfulImage.Query props
@@ -106,14 +101,14 @@ const ContentfulImage: React.FC<Props> = (
         if (format === '8bit') {
             addToQuery({'fm': 'png'})
             addToQuery({'fl': 'png8'})
-            mimeType = 'png'
+            mimeType = 'image/png'
         } else if (format === 'progressive') {
             addToQuery({'fm': 'jpg'})
             addToQuery({'fl': 'progressive'})
-            mimeType = 'jpg'
+            mimeType = 'image/jpg'
         } else {
             addToQuery({[imagePropsMap['format']]: format.toString()})
-            mimeType = format
+            mimeType = `image/${format}`
         }
     }
 
@@ -129,10 +124,10 @@ const ContentfulImage: React.FC<Props> = (
 
     return (
         <picture>
-            <source srcSet={transformSrc} type={`image/${mimeType}`}/>
+            <source srcSet={transformSrc} type={`${mimeType}`}/>
             <img
                 src={image.url}
-                alt={alt}
+                alt={alt || image.title}
                 decoding={decoding}
                 width={width}
                 height={height}

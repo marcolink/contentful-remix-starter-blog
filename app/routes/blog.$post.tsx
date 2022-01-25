@@ -29,10 +29,10 @@ export const meta: MetaFunction = ({parentsData, params, data, location}) => {
     const post: TypePostDetail = data.post
     const description = post.description
     const image = post.heroImage.url
-    const title = post.title
+    const title = "Contentful Remix Blog Starter - " + post.title
 
     return {
-        titel: title,
+        title: title,
         "image": image,
         "og:title": title,
         "og:description": description,
@@ -47,7 +47,7 @@ export default function BlogPost() {
     const document = useReactComponentFromDocument(body)
 
     return (
-        <div className={"blog-post"}>
+        <article className={"blog-post"}>
             <Hero
                 image={post.heroImage}
                 title={post.title}
@@ -64,6 +64,6 @@ export default function BlogPost() {
                     <Tags tags={post.tags}/>
                 </div>
             </div>
-        </div>
+        </article>
     )
 }

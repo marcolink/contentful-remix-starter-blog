@@ -5,7 +5,7 @@ type Props = {
     children?: React.ReactNode
 }
 
-const Container:React.FC<Props> = ({ children, as = 'div' }) => {
+const Container:React.FC<Props> = ({ children, as = 'section' }) => {
   const Tag = as
   return (
     <Tag

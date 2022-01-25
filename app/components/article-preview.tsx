@@ -3,11 +3,16 @@ import {Link} from 'remix'
 import {ContentfulImage} from "~/components/contentful-image";
 import {CssModuleWrapper} from "~/components/css-module-wrapper";
 import {toReadableDate} from "~/utils/to-readable-date";
+import {TypePostPreview} from "../../types/contentful-graphql-types";
 
 import Container from './container'
 import Tags from './tags'
 
-const ArticlePreview = ({posts}) => {
+type Props = {
+    posts: TypePostPreview[]
+}
+
+const ArticlePreview: React.FC<Props> = ({posts}) => {
     if (!posts) return null
     if (!Array.isArray(posts)) return null
 
@@ -21,22 +26,23 @@ const ArticlePreview = ({posts}) => {
                                 <Link to={`/blog/${post.slug}`} className={"link"} prefetch={"intent"}>
                                     <ContentfulImage
                                         image={post.heroImage}
-                                        width={424}
+                                        width={363}
                                         height={212}
                                         quality={50}
                                         format={"webp"}
+                                        behaviour={"thumb"}
                                     />
                                     <h2 className={"title"}>{post.title}</h2>
                                 </Link>
-                                <div
+                                <section
                                     dangerouslySetInnerHTML={{
                                         __html: post.description,
                                     }}
                                 />
-                                <div className={"meta"}>
+                                <section className={"meta"}>
                                     <small className="meta">{toReadableDate(post.publishDate)}</small>
-                                    <Tags tags={post.tags}/>
-                                </div>
+                                    {post.tags && <Tags tags={post.tags}/>}
+                                </section>
                             </li>
                         )
                     })}
