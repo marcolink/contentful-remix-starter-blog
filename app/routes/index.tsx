@@ -1,5 +1,5 @@
 import {useLoaderData} from "@remix-run/react";
-import {json, LoaderFunction} from "remix";
+import {json, LoaderFunction} from "@remix-run/server-runtime";
 import {client} from "~/client.server";
 import ArticlePreview from "~/components/article-preview";
 import Hero from "~/components/hero";

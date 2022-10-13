@@ -1,6 +1,6 @@
+import {Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration} from "@remix-run/react";
+import {MetaFunction} from "@remix-run/server-runtime";
 import React from "react";
-import type {MetaFunction} from "remix";
-import {Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration} from "remix";
 import Footer from "~/components/footer";
 import Navigation from "~/components/navigation";
 
