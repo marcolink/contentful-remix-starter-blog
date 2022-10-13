@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'remix'
+import {Link} from '@remix-run/react'
 import {ContentfulImage} from "~/components/contentful-image";
 import {CssModuleWrapper} from "~/components/css-module-wrapper";
 import {toReadableDate} from "~/utils/to-readable-date";

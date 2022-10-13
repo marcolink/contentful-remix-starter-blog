@@ -1,7 +1,9 @@
 import {ApolloClient, gql, InMemoryCache} from '@apollo/client';
 import {TypeAuthor, TypePostDetail, TypePostPreview} from "../types/contentful-graphql-types";
 
+// @ts-ignore
 const SPACE = process.env.CONTENTFUL_SPACE;
+// @ts-ignore
 const TOKEN = process.env.CONTENTFUL_CDA_TOKEN;
 
 const apolloClient = new ApolloClient({

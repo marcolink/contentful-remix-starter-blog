@@ -1,7 +1,7 @@
 import type {Document} from "@contentful/rich-text-types"
 import {useLoaderData} from "@remix-run/react";
+import {json, LinksFunction, LoaderFunction, MetaFunction} from "@remix-run/server-runtime";
 import * as React from "react";
-import {json, LinksFunction, LoaderFunction, MetaFunction} from "remix";
 import {client} from "~/client.server";
 import Hero from "~/components/hero";
 import Tags from "~/components/tags";
@@ -61,7 +61,7 @@ export default function BlogPost() {
           </span>
                 <div className={"article"}>
                     <div className={"body"}>{document}</div>
-                    <Tags tags={post.tags}/>
+                    <Tags tags={post.tags || []}/>
                 </div>
             </div>
         </article>

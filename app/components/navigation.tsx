@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'remix'
+import {Link} from '@remix-run/react'
 import {CssModuleWrapper} from "~/components/css-module-wrapper";
 
 const Navigation: React.FC = () => (
