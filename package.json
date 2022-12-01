@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@contentful/rich-text-types": "^15.15.1",
-    "@remix-run/dev": "^1.7.6",
+    "@remix-run/dev": "^1.8.0",
     "@remix-run/vercel": "^1.8.0",
     "@types/graphql": "^14.5.0",
     "@types/node": "^16.11.65",
