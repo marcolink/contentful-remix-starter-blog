@@ -41,7 +41,7 @@
     "@types/node": "^16.11.65",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
-    "contentful": "^9.2.14",
+    "contentful": "^9.2.15",
     "typescript": "^4.9.4"
   },
   "engines": {
