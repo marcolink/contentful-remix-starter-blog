@@ -1,6 +1,6 @@
 # Contentful Remix Starter Blog
 
-![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=contentful-remix-starter-blog)
+![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=contentful-remix-starter-blog) ![Checkly](https://api.checklyhq.com/v1/badges/checks/458d0ea0-c335-4b75-a344-3f7f2dcd082b?)
 
 Create a [Remix](https://remix.run/) blog powered by [Contentful](https://www.contentful.com). Based on the [contentful gatsby starter](https://github.com/contentful/starter-gatsby-blog) blog repo.
 
