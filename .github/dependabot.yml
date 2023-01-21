@@ -4,6 +4,11 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      - dependency-name: "react"
+        versions: ">= 18"
+      - dependency-name: "react-dom"
+        versions: ">= 18"
     open-pull-requests-limit: 10
     commit-message:
       prefix: build
