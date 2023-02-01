@@ -22,7 +22,7 @@
     "generate": "npx cf-content-types-generator -s $CONTENTFUL_SPACE -t $CONTENTFUL_CMA_TOKEN -o ./types/generated --localized"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.5",
+    "@apollo/client": "^3.7.6",
     "@contentful/rich-text-from-markdown": "^15.16.2",
     "@contentful/rich-text-react-renderer": "^15.16.2",
     "@remix-run/node": "^1.12.0",
