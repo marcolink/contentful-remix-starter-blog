@@ -34,7 +34,7 @@
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
-    "@contentful/rich-text-types": "^16.0.2",
+    "@contentful/rich-text-types": "^16.0.3",
     "@remix-run/dev": "^1.14.1",
     "@remix-run/vercel": "^1.14.1",
     "@types/graphql": "^14.5.0",
