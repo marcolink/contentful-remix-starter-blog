@@ -38,14 +38,14 @@
     "@remix-run/dev": "^1.17.1",
     "@remix-run/vercel": "^1.17.1",
     "@types/graphql": "^14.5.0",
-    "@types/node": "^16.11.65",
+    "@types/node": "^16.18.36",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^17.0.9",
     "contentful": "^9.3.5",
     "typescript": "^4.9.5"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   },
   "sideEffects": false
 }

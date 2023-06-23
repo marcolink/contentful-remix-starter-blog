@@ -6,11 +6,11 @@ import Navigation from "~/components/navigation";
 
 import variablesStyles from "~/styles/variables.css";
 import globalStyles from "~/styles/global.css";
-import footerStyles from "~/styles/modules/footer.module.css";
-import heroStyles from "~/styles/modules/hero.module.css";
-import navigationStyles from "~/styles/modules/navigation.module.css";
-import tagsStyles from "~/styles/modules/tags.module.css";
-import articlePreviewStyles from "~/styles/modules/article-preview.module.css";
+import footerStyles from "~/styles/modules/footer.css";
+import heroStyles from "~/styles/modules/hero.css";
+import navigationStyles from "~/styles/modules/navigation.css";
+import tagsStyles from "~/styles/modules/tags.css";
+import articlePreviewStyles from "~/styles/modules/article-preview.css";
 
 export const links = () => [
     {rel: "stylesheet", href: variablesStyles},
