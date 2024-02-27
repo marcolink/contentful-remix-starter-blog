@@ -7,5 +7,8 @@ module.exports = {
     publicPath: "/build/",
     serverBuildDirectory: "api/_build",
     ignoredRouteFiles: [".*"],
-    serverDependenciesToBundle: ["@apollo/client", "zen-observable-ts"]
+    serverDependenciesToBundle: ["@apollo/client", "zen-observable-ts"],
+    future: {
+        v2_dev: true,
+    }
 };
