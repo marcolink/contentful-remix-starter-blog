@@ -9,3 +9,4 @@ node_modules
 public/build
 api/_build
 .tool-versions
+build
