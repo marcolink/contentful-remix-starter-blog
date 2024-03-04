@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.9.5",
-    "@contentful/rich-text-from-markdown": "^15.16.13",
+    "@contentful/rich-text-from-markdown": "^15.16.15",
     "@contentful/rich-text-react-renderer": "^15.19.4",
     "@remix-run/node": "^1.19.1",
     "@remix-run/react": "^1.19.1",
