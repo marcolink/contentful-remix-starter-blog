@@ -28,7 +28,7 @@
     "@remix-run/node": "^1.19.1",
     "@remix-run/react": "^1.19.1",
     "@remix-run/serve": "^1.18.1",
-    "@remix-run/server-runtime": "^1.19.1",
+    "@remix-run/server-runtime": "^2.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "reading-time": "^1.5.0"
